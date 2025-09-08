@@ -1,0 +1,32 @@
+resources:
+  jobs:
+    medisure_orchestrate:
+      name: medisure_orchestrate
+      email_notifications:
+        on_success:
+          - cherina.sarinas@essilor.com
+        on_failure:
+          - cherina.sarinas@essilor.com
+      schedule:
+        quartz_cron_expression: 0 0 17 ? * MON *
+        timezone_id: UTC
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: medisure_bronze
+          pipeline_task:
+            pipeline_id: 8cc0bb3f-979f-479f-abd6-c45e212e5265
+            full_refresh: true
+        - task_key: medisure_silver
+          depends_on:
+            - task_key: medisure_bronze
+          pipeline_task:
+            pipeline_id: cf4e6ba2-5047-477f-b9f0-5bf15c0988f9
+            full_refresh: true
+        - task_key: medisure_gold
+          depends_on:
+            - task_key: medisure_silver
+          run_job_task:
+            job_id: 1077013054962051
+      queue:
+        enabled: true
+      performance_target: STANDARD
