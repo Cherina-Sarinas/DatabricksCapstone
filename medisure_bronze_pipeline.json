@@ -1,0 +1,18 @@
+{
+    "pipeline_type": "WORKSPACE",
+    "development": true,
+    "continuous": false,
+    "channel": "PREVIEW",
+    "photon": true,
+    "libraries": [
+        {
+            "notebook": {
+                "path": "/Users/charina.sarinas@gmail.com/DatabricksCapstone/cs_bronze"
+            }
+        }
+    ],
+    "name": "medisure_bronze",
+    "serverless": true,
+    "catalog": "capstone",
+    "target": "medisure"
+}

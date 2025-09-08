@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    medisure_gold:
+      name: medisure_gold
+      tasks:
+        - task_key: gold_claims
+          notebook_task:
+            notebook_path: /Workspace/Users/charina.sarinas@gmail.com/DatabricksCapstone/cs_gold
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: STANDARD
